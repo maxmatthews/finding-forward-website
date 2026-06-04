@@ -1,0 +1,52 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  active?: 'home' | 'approach' | 'about' | 'contact' | 'services';
+}
+const {
+  title = 'Finding Forward — Online counseling in Virginia & New York',
+  description = 'Online mental health counseling with Kevin Roche, LMHC, LPC. DBT and Self-Compassion therapy via secure telehealth for clients in Virginia and New York.',
+  active = 'home',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Nav active={active} />
+    <main><slot /></main>
+    <Footer />
+
+    <script is:inline>
+      // Deferred reveal: only used for elements that should wait for scroll
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        }
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('[data-reveal-defer]').forEach((el) => io.observe(el));
+
+      // Header shrink on scroll
+      const header = document.querySelector('[data-header]');
+      if (header) {
+        window.addEventListener('scroll', () => {
+          header.classList.toggle('is-scrolled', window.scrollY > 24);
+        }, { passive: true });
+      }
+    </script>
+  </body>
+</html>

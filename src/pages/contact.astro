@@ -1,0 +1,294 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const hours = [
+  { day: 'Monday',    win: '8a — 5p' },
+  { day: 'Tuesday',   win: '8a — 9p' },
+  { day: 'Wednesday', win: '8a — 5p' },
+  { day: 'Thursday',  win: '8a — 9p' },
+  { day: 'Friday',    win: '8a — 1p' },
+  { day: 'Saturday',  win: 'Closed' },
+  { day: 'Sunday',    win: 'Closed' },
+];
+---
+<Layout active="contact" title="Contact — Finding Forward">
+
+  <section class="chead">
+    <div class="wrap chead__wrap">
+      <p class="eyebrow" data-reveal>Section — Contact</p>
+      <h1 class="display chead__h" data-reveal data-reveal-delay="1">
+        Let's see if this is<br/>
+        the <em>right fit.</em>
+      </h1>
+      <p class="chead__lead" data-reveal data-reveal-delay="2">
+        The fastest way to start: book a free 20-minute consultation call.
+        We'll have a real conversation, no pressure, and you'll know whether
+        to move forward.
+      </p>
+    </div>
+  </section>
+
+  <section class="ccontact">
+    <div class="wrap ccontact__wrap">
+      <!-- Big CTA card -->
+      <div class="cta-card" data-reveal>
+        <p class="mono cta-card__top">Primary path</p>
+        <h2 class="display cta-card__h">
+          Schedule a<br/>
+          free <em>consult.</em>
+        </h2>
+        <p class="cta-card__p">
+          20 minutes on Zoom. Bring whatever's on your mind — even if it's
+          unformed. I'll meet you wherever the conversation needs to be.
+        </p>
+        <a class="btn btn-primary cta-card__btn" href="https://calendly.com/kevinrochelpc/consultation-call" target="_blank" rel="noopener">
+          <span>Open the calendar</span><span class="dot" aria-hidden="true"></span>
+        </a>
+        <div class="cta-card__alt">
+          <p class="mono">or</p>
+          <a href="tel:+15712009906" class="cta-card__phone">(571) 200&nbsp;–&nbsp;9906</a>
+          <p class="mono cta-card__hint">Voicemail returned within one business day</p>
+        </div>
+      </div>
+
+      <!-- Hours panel -->
+      <aside class="hours" data-reveal data-reveal-delay="2">
+        <p class="mono hours__label">Office hours · Eastern</p>
+        <ul class="hours__list">
+          {hours.map(h => (
+            <li class:list={[{closed: h.win === 'Closed'}]}>
+              <span class="display">{h.day}</span>
+              <span class="mono">{h.win}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="hours__foot">
+          <p class="mono hours__label">Status</p>
+          <p class="hours__live"><span class="pulse"></span> Accepting new clients</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="logi">
+    <div class="wrap">
+      <h2 class="display logi__h" data-reveal>
+        Before our call —<br/> a couple of <em>FAQs.</em>
+      </h2>
+      <div class="logi__grid">
+        <details class="faq" data-reveal data-reveal-delay="1">
+          <summary>
+            <span>What happens in the first session?</span>
+            <span class="faq__plus" aria-hidden="true">+</span>
+          </summary>
+          <p>The first 50 minutes is more conversation than intake. We talk about what's bringing you in, what you've tried, and what you're hoping to feel different. Toward the end we'll sketch out a rough plan — but it's an opening conversation, not a contract.</p>
+        </details>
+        <details class="faq" data-reveal data-reveal-delay="1">
+          <summary>
+            <span>Do you take insurance?</span>
+            <span class="faq__plus" aria-hidden="true">+</span>
+          </summary>
+          <p>Yes — most major plans in VA and NY, processed through Headway. There's a one-click benefits checker linked in the footer.</p>
+        </details>
+        <details class="faq" data-reveal data-reveal-delay="2">
+          <summary>
+            <span>How often do we meet?</span>
+            <span class="faq__plus" aria-hidden="true">+</span>
+          </summary>
+          <p>Weekly to start, 50 minutes. Some stretches call for twice-weekly; we'll adjust as needed.</p>
+        </details>
+        <details class="faq" data-reveal data-reveal-delay="2">
+          <summary>
+            <span>What if telehealth doesn't work for me?</span>
+            <span class="faq__plus" aria-hidden="true">+</span>
+          </summary>
+          <p>It's a fair question. Some people prefer being in a room. Most clients find the privacy of their own space lowers the barrier to honesty — but if it's not the right format, I'll help you find someone local.</p>
+        </details>
+        <details class="faq" data-reveal data-reveal-delay="3">
+          <summary>
+            <span>Where are you actually located?</span>
+            <span class="faq__plus" aria-hidden="true">+</span>
+          </summary>
+          <p>The practice is virtually headquartered in New York and serves clients in both Virginia and New York via telehealth.</p>
+        </details>
+        <details class="faq" data-reveal data-reveal-delay="3">
+          <summary>
+            <span>How do I cancel or reschedule?</span>
+            <span class="faq__plus" aria-hidden="true">+</span>
+          </summary>
+          <p>Through the Simple Practice portal, or by replying to your appointment email. 24 hours' notice is appreciated; emergencies happen and we'll work with you.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .chead { padding: clamp(64px, 8vw, 120px) 0 clamp(40px, 5vw, 64px); background: var(--bone); }
+  .chead__wrap { display: grid; gap: 22px; max-width: 1100px; }
+  .chead__h { font-size: clamp(56px, 8vw, 132px); line-height: 0.94; letter-spacing: -0.04em; }
+  .chead__h em { color: var(--clay); }
+  .chead__lead { font-size: 19px; max-width: 60ch; color: var(--ink-2); }
+
+  .ccontact { padding: clamp(40px, 6vw, 80px) 0 clamp(80px, 10vw, 140px); background: var(--bone); }
+  .ccontact__wrap {
+    display: grid;
+    grid-template-columns: 1.3fr 0.85fr;
+    gap: clamp(24px, 3vw, 40px);
+    align-items: stretch;
+  }
+
+  .cta-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(40px, 5vw, 64px);
+    border-radius: 4px;
+    display: grid;
+    gap: 22px;
+    align-content: start;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-card::before {
+    content: '';
+    position: absolute;
+    bottom: -50px; right: -50px;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(229, 183, 99, 0.3), transparent 70%);
+    pointer-events: none;
+  }
+  .cta-card__top { color: var(--sage); }
+  .cta-card__h {
+    font-size: clamp(40px, 5.5vw, 84px);
+    line-height: 0.96;
+    color: var(--paper);
+    letter-spacing: -0.035em;
+  }
+  .cta-card__h em { color: var(--sun); font-variation-settings: "opsz" 144, "SOFT" 100; }
+  .cta-card__p { color: rgba(250,245,234,0.78); font-size: 17px; max-width: 50ch; }
+  .cta-card__btn { background: var(--paper); color: var(--ink); align-self: start; }
+  .cta-card__btn:hover { background: var(--sun); color: var(--ink); }
+  .cta-card__alt {
+    margin-top: 16px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(250,245,234,0.18);
+    display: grid;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-card__phone {
+    font-family: var(--display);
+    font-size: 36px;
+    color: var(--paper);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-style: italic;
+    border-bottom: 1px solid rgba(250,245,234,0.3);
+    padding-bottom: 4px;
+    width: max-content;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .cta-card__phone:hover { color: var(--sun); border-color: var(--sun); }
+  .cta-card__hint { color: rgba(250,245,234,0.6); font-size: 11px; }
+
+  .hours {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: clamp(28px, 3vw, 36px);
+    border-radius: 4px;
+    display: grid;
+    gap: 16px;
+    align-content: start;
+  }
+  .hours__label { color: var(--ink-2); }
+  .hours__list {
+    list-style: none;
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .hours__list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .hours__list li.closed { color: var(--ink-2); }
+  .hours__list .display { font-size: 22px; font-variation-settings: "opsz" 144, "SOFT" 40; }
+  .hours__list .mono { font-size: 12px; letter-spacing: 0.12em; }
+  .hours__foot {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .hours__live { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink); margin-top: 8px; }
+
+  @media (max-width: 880px) {
+    .ccontact__wrap { grid-template-columns: 1fr; }
+  }
+
+  .logi {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background: var(--bone-2);
+  }
+  .logi__h {
+    font-size: clamp(40px, 5.5vw, 84px);
+    line-height: 1;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
+  .logi__h em { color: var(--clay); }
+  .logi__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .faq {
+    border-bottom: 1px solid var(--line);
+    padding: 22px 28px 22px 0;
+    transition: background 0.4s var(--ease);
+  }
+  .faq:nth-child(odd) { padding-right: 36px; border-right: 1px solid var(--line); }
+  .faq:nth-child(even) { padding-left: 36px; }
+  .faq summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--display);
+    font-size: 21px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    gap: 16px;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq__plus {
+    width: 28px; height: 28px;
+    display: grid; place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 16px;
+    color: var(--ink);
+    flex-shrink: 0;
+    transition: transform 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .faq[open] .faq__plus { transform: rotate(45deg); background: var(--clay); color: var(--paper); border-color: var(--clay); }
+  .faq p {
+    margin-top: 14px;
+    color: var(--ink-2);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  @media (max-width: 700px) {
+    .logi__grid { grid-template-columns: 1fr; }
+    .faq:nth-child(odd) { padding-right: 0; border-right: 0; }
+    .faq:nth-child(even) { padding-left: 0; }
+  }
+</style>

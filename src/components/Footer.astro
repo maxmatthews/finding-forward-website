@@ -1,0 +1,153 @@
+---
+const today = new Date();
+const year = today.getFullYear();
+---
+<footer class="ft">
+  <div class="wrap ft__inner">
+    <div class="ft__cta" data-reveal>
+      <p class="eyebrow">A note before you go</p>
+      <h2 class="display ft__big">
+        Reaching out is the<br/>
+        <em>first quiet step</em>.
+      </h2>
+      <p class="muted ft__sub">
+        Twenty minutes, no commitment. We meet on Zoom and see whether
+        this feels like the right fit. If it does, we'll go from there.
+      </p>
+      <div class="ft__buttons">
+        <a class="btn btn-primary" href="https://calendly.com/kevinrochelpc/consultation-call" target="_blank" rel="noopener">
+          <span>Schedule a consultation</span><span class="dot" aria-hidden="true"></span>
+        </a>
+        <a class="btn btn-ghost" href="https://headway.co/does-my-insurance-cover-therapy" target="_blank" rel="noopener">
+          <span>Check insurance benefits</span><span class="dot" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="ft__cols">
+      <div>
+        <p class="mono ft__label">Contact</p>
+        <p class="ft__line"><a href="tel:+15712009906">(571) 200&nbsp;–&nbsp;9906</a></p>
+        <p class="ft__line muted">Mon–Fri · 8a – 9p (ET)</p>
+      </div>
+      <div>
+        <p class="mono ft__label">Practice</p>
+        <p class="ft__line">Kevin Roche, LMHC · LPC</p>
+        <p class="ft__line muted">NY 009382 · VA 0701010208</p>
+      </div>
+      <div>
+        <p class="mono ft__label">Telehealth in</p>
+        <p class="ft__line">Virginia · New York</p>
+        <p class="ft__line muted">Simple Practice portal</p>
+      </div>
+      <div>
+        <p class="mono ft__label">Sitemap</p>
+        <ul class="ft__list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="https://headway.co/providers/kevin-roche" target="_blank" rel="noopener">Client portal ↗</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ft__wordmark" aria-hidden="true">
+      <span class="display ft__wm">Finding <em>forward</em></span>
+    </div>
+
+    <div class="ft__meta">
+      <p class="mono">© {year} Finding Forward, PLLC · Virtually headquartered in New York</p>
+      <p class="mono"><span class="pulse" style="display:inline-block;margin-right:6px;"></span> Accepting new clients</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ft {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(80px, 12vw, 160px) 0 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ft::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(195, 107, 71, 0.25), transparent 60%);
+    pointer-events: none;
+  }
+  .ft__inner { position: relative; }
+  .ft .eyebrow { color: var(--sage); }
+  .ft .eyebrow::before { background: var(--sage); }
+
+  .ft__cta { display: grid; gap: 26px; max-width: 880px; }
+  .ft__big {
+    font-size: clamp(48px, 8vw, 112px);
+    font-weight: 320;
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    color: var(--paper);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .ft__big em { color: var(--sun); font-variation-settings: "opsz" 144, "SOFT" 100; }
+  .ft__sub { color: rgba(250, 245, 234, 0.7); font-size: 17px; max-width: 56ch; }
+  .ft__buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+
+  .ft .btn-primary { background: var(--paper); color: var(--ink); }
+  .ft .btn-primary:hover { background: var(--sun); color: var(--ink); }
+  .ft .btn-ghost { color: var(--paper); border-color: rgba(250,245,234,0.2); }
+  .ft .btn-ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+
+  .ft__cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    margin-top: clamp(80px, 10vw, 140px);
+    padding-top: 40px;
+    border-top: 1px solid rgba(250, 245, 234, 0.12);
+  }
+  .ft__label { color: var(--sage); margin-bottom: 14px; }
+  .ft__line { color: var(--paper); font-size: 16px; margin-bottom: 4px; max-width: none; }
+  .ft__line.muted { color: rgba(250,245,234,0.55); font-size: 13px; }
+  .ft__line a { border-bottom: 1px solid transparent; transition: border 0.3s ease; }
+  .ft__line a:hover { border-color: var(--sun); }
+  .ft__list { list-style: none; display: grid; gap: 8px; }
+  .ft__list a { color: var(--paper); font-size: 16px; opacity: 0.85; transition: opacity 0.3s ease, color 0.3s ease; }
+  .ft__list a:hover { opacity: 1; color: var(--sun); }
+
+  .ft__wordmark {
+    margin-top: clamp(60px, 10vw, 120px);
+    text-align: center;
+    overflow: hidden;
+  }
+  .ft__wm {
+    font-size: clamp(80px, 22vw, 320px);
+    font-weight: 280;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    color: rgba(250, 245, 234, 0.06);
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    white-space: nowrap;
+  }
+  .ft__wm em { font-variation-settings: "opsz" 144, "SOFT" 100; color: rgba(229, 183, 99, 0.18); }
+
+  .ft__meta {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(250, 245, 234, 0.12);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .ft__meta .mono { color: rgba(250,245,234,0.5); font-size: 11px; }
+
+  @media (max-width: 800px) {
+    .ft__cols { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

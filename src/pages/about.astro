@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout active="about" title="About — Finding Forward">
+
+  <section class="ahead">
+    <div class="wrap ahead__wrap">
+      <div class="ahead__copy">
+        <p class="eyebrow" data-reveal>Section — About</p>
+        <h1 class="display ahead__h" data-reveal data-reveal-delay="1">
+          Kevin <em>Roche</em>,<br/>
+          LMHC · LPC.
+        </h1>
+        <p class="ahead__lead" data-reveal data-reveal-delay="2">
+          Founder of Finding Forward, PLLC — a small online practice serving
+          adults across Virginia and New York. Quiet by design.
+        </p>
+        <ul class="ahead__bits" data-reveal data-reveal-delay="3">
+          <li><span class="mono">License · NY</span> 009382</li>
+          <li><span class="mono">License · VA</span> 0701010208</li>
+          <li><span class="mono">Trained in</span> DBT · Self-Compassion · ACT</li>
+          <li><span class="mono">Languages</span> English</li>
+        </ul>
+      </div>
+      <figure class="ahead__photo" data-reveal data-reveal-delay="2">
+        <img src="/images/kevin.jpg" alt="Kevin Roche, LMHC LPC"/>
+        <figcaption class="mono">Plate — the founder</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="wrap story__wrap">
+      <div class="story__col" data-reveal>
+        <p class="eyebrow no-bar">A short note from Kevin</p>
+        <p class="display story__pull">
+          <em>"</em>The clients I'm best for are the ones who suspect they're
+          smarter than their patterns, and tired of being right about it.<em>"</em>
+        </p>
+      </div>
+      <div class="story__col story__col--text">
+        <p data-reveal data-reveal-delay="1">
+          I came to therapy the long way. Before this, I worked in roles that
+          asked me to keep my own emotional weather invisible — the kind of work
+          that teaches you to push through, then makes you wonder why you can't
+          stop pushing.
+        </p>
+        <p data-reveal data-reveal-delay="2">
+          When I trained as a counselor, I was drawn to approaches that respect
+          the client as the expert on their own life. DBT and self-compassion
+          both work that way. They give you frameworks, not formulas, and assume
+          you'll bring the wisdom about your particular situation.
+        </p>
+        <p data-reveal data-reveal-delay="3">
+          The clients I tend to do best work with are thoughtful, often a bit
+          self-critical, and ready to be slightly less alone with what they're
+          carrying. If that sounds like the version of you reading this — let's
+          have a conversation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="values">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What you can expect</p>
+      <h2 class="display values__h" data-reveal data-reveal-delay="1">
+        Four small <em>promises</em>.
+      </h2>
+      <ol class="values__list">
+        <li data-reveal data-reveal-delay="2">
+          <span class="display values__n">i.</span>
+          <h3>I'll be on time.</h3>
+          <p>And if I'm not, I'll tell you why, and the next session is on me. Small thing. Big trust.</p>
+        </li>
+        <li data-reveal data-reveal-delay="3">
+          <span class="display values__n">ii.</span>
+          <h3>I won't pretend.</h3>
+          <p>If something's outside my scope, you'll hear that. I'd rather refer well than work shallow.</p>
+        </li>
+        <li data-reveal data-reveal-delay="4">
+          <span class="display values__n">iii.</span>
+          <h3>I'll be direct, kindly.</h3>
+          <p>Vague reassurance helps no one. I'll say the thing — and we'll work with whatever you do with it.</p>
+        </li>
+        <li data-reveal data-reveal-delay="5">
+          <span class="display values__n">iv.</span>
+          <h3>You set the pace.</h3>
+          <p>Some weeks we go deep. Some weeks we tend the garden. Both count.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .ahead {
+    padding: clamp(64px, 8vw, 120px) 0;
+    background: var(--bone);
+  }
+  .ahead__wrap {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: clamp(40px, 5vw, 80px);
+    align-items: center;
+  }
+  .ahead__copy { display: grid; gap: 22px; }
+  .ahead__h {
+    font-size: clamp(60px, 9vw, 152px);
+    line-height: 0.93;
+    letter-spacing: -0.04em;
+  }
+  .ahead__h em { color: var(--clay); }
+  .ahead__lead { font-size: 21px; max-width: 50ch; color: var(--ink-2); }
+
+  .ahead__bits {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 32px;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    margin-top: 12px;
+  }
+  .ahead__bits li { font-size: 16px; }
+  .ahead__bits .mono { display: block; color: var(--ink-2); margin-bottom: 4px; }
+
+  .ahead__photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px rgba(28,38,32,0.18);
+  }
+  .ahead__photo img { width: 100%; height: 100%; object-fit: cover; }
+  .ahead__photo figcaption {
+    position: absolute;
+    bottom: 16px; left: 16px;
+    color: var(--paper);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+  }
+
+  @media (max-width: 880px) {
+    .ahead__wrap { grid-template-columns: 1fr; }
+  }
+
+  .story {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background: var(--bone-2);
+  }
+  .story__wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 5vw, 80px);
+    align-items: start;
+  }
+  .story__col { display: grid; gap: 18px; }
+  .story__pull {
+    font-family: var(--display);
+    font-size: clamp(28px, 3.4vw, 48px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 360;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+  }
+  .story__pull em { color: var(--clay); font-size: 1.4em; line-height: 0; vertical-align: -0.2em; font-variation-settings: "opsz" 144, "SOFT" 100; }
+  .story__col--text p { font-size: 17px; color: var(--ink); margin-bottom: 18px; max-width: 56ch; }
+  .story__col--text p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 880px) { .story__wrap { grid-template-columns: 1fr; } }
+
+  .values {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .values .eyebrow { color: var(--sage); }
+  .values .eyebrow::before { background: var(--sage); }
+  .values__h {
+    margin: 22px 0 clamp(48px, 6vw, 80px);
+    font-size: clamp(48px, 7vw, 104px);
+    line-height: 1;
+    color: var(--paper);
+  }
+  .values__h em { color: var(--sun); font-variation-settings: "opsz" 144, "SOFT" 100; }
+
+  .values__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(250,245,234,0.12);
+    border: 1px solid rgba(250,245,234,0.12);
+  }
+  .values__list li {
+    background: var(--ink);
+    padding: 36px 28px;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    transition: background 0.6s var(--ease);
+  }
+  .values__list li:hover { background: var(--ink-2); }
+  .values__n {
+    font-size: 40px;
+    color: var(--clay);
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .values__list h3 { font-size: 22px; color: var(--paper); letter-spacing: -0.01em; }
+  .values__list p { font-size: 14px; color: rgba(250,245,234,0.72); max-width: none; }
+
+  @media (max-width: 1000px) { .values__list { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .values__list { grid-template-columns: 1fr; } }
+</style>

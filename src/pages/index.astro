@@ -1,0 +1,695 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout active="home">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero__wrap">
+      <div class="hero__top" data-reveal>
+        <p class="eyebrow">Index — 01 / Welcome</p>
+        <p class="mono hero__loc"><span class="pulse" style="display:inline-block;margin-right:8px;"></span> Telehealth · VA &amp; NY</p>
+      </div>
+
+      <h1 class="display hero__h" data-reveal data-reveal-delay="1">
+        It's time to<br/>
+        find your way<br/>
+        <em>forward.</em>
+      </h1>
+
+      <div class="hero__meta" data-reveal data-reveal-delay="2">
+        <div class="hero__col">
+          <p class="mono hero__label">Practice</p>
+          <p class="hero__val">Online mental-health counseling<br/>with Kevin Roche, LMHC · LPC</p>
+        </div>
+        <div class="hero__col">
+          <p class="mono hero__label">Modalities</p>
+          <p class="hero__val">Dialectical Behavior Therapy<br/>Self-Compassion Therapy</p>
+        </div>
+        <div class="hero__col">
+          <p class="mono hero__label">Sessions</p>
+          <p class="hero__val">50 minutes · weekly<br/>Most major insurance accepted</p>
+        </div>
+      </div>
+
+      <div class="hero__cta" data-reveal data-reveal-delay="3">
+        <a class="btn btn-primary" href="https://calendly.com/kevinrochelpc/consultation-call" target="_blank" rel="noopener">
+          <span>Book a free consult</span><span class="dot" aria-hidden="true"></span>
+        </a>
+        <a class="btn btn-ghost" href="#approach">
+          <span>How we work</span><span class="dot" aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <!-- Asymmetric collage panel -->
+      <div class="hero__art" aria-hidden="true">
+        <figure class="hero__art-1" data-reveal data-reveal-delay="2">
+          <img src="/images/path-forest.jpg" alt="" loading="eager"/>
+          <figcaption class="mono">Plate 01 — open path</figcaption>
+        </figure>
+        <div class="hero__quote" data-reveal data-reveal-delay="4">
+          <span class="display hero__quote-mark">"</span>
+          <p class="hero__quote-t">
+            The place to improve the world is first in one's own heart and head and hands.
+          </p>
+          <p class="mono hero__quote-by">— Robert M. Pirsig</p>
+        </div>
+        <figure class="hero__art-2" data-reveal data-reveal-delay="3">
+          <img src="/images/sunrise.jpg" alt="" loading="lazy"/>
+          <figcaption class="mono">Plate 02 — morning</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        {Array.from({length: 4}).map(() => (
+          <span class="ticker__item">
+            <span>Today, therapy is in reach</span><span class="ticker__dot">✶</span>
+            <span>Compassion over criticism</span><span class="ticker__dot">✶</span>
+            <span>Meet on Zoom, anywhere in VA &amp; NY</span><span class="ticker__dot">✶</span>
+            <span>Accepting new clients</span><span class="ticker__dot">✶</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section id="approach" class="approach">
+    <div class="wrap approach__wrap">
+      <div class="approach__intro">
+        <p class="eyebrow" data-reveal>Index — 02 / Approach</p>
+        <h2 class="display approach__h" data-reveal data-reveal-delay="1">
+          A practice grounded in <em>what you can</em> change —
+          <br/>and gentle about <em>what you can't.</em>
+        </h2>
+      </div>
+
+      <div class="approach__grid">
+        <div class="approach__lead" data-reveal data-reveal-delay="2">
+          <p>
+            Therapy here begins with a simple idea: focus on what's controllable,
+            and let go — at least a little — of what isn't. From that quiet pivot,
+            real change tends to follow.
+          </p>
+          <p class="muted">
+            Together we'll build skills you can actually carry into the rest of
+            your week. Not affirmations. Tools.
+          </p>
+        </div>
+
+        <ol class="pillars">
+          <li class="pillar" data-reveal data-reveal-delay="2">
+            <p class="mono pillar__n">01</p>
+            <h3 class="pillar__h">Listen first.</h3>
+            <p class="pillar__p">No script. We start with where you actually are — the loop, the worry, the relationship, the day.</p>
+          </li>
+          <li class="pillar" data-reveal data-reveal-delay="3">
+            <p class="mono pillar__n">02</p>
+            <h3 class="pillar__h">Name it clearly.</h3>
+            <p class="pillar__p">Words for the thing make it workable. We translate vague distress into something you can hold and respond to.</p>
+          </li>
+          <li class="pillar" data-reveal data-reveal-delay="4">
+            <p class="mono pillar__n">03</p>
+            <h3 class="pillar__h">Build small skills.</h3>
+            <p class="pillar__p">DBT and self-compassion give you concrete moves. You leave each session with something to try.</p>
+          </li>
+          <li class="pillar" data-reveal data-reveal-delay="5">
+            <p class="mono pillar__n">04</p>
+            <h3 class="pillar__h">Stay kind.</h3>
+            <p class="pillar__p">Progress is rarely linear. Self-criticism rarely helps. We practice meeting yourself the way a friend would.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="svcs">
+    <div class="wrap">
+      <div class="svcs__head">
+        <p class="eyebrow" data-reveal>Index — 03 / Services</p>
+        <h2 class="display svcs__h" data-reveal data-reveal-delay="1">
+          Two evidence-based<br/> paths, woven together.
+        </h2>
+        <p class="svcs__sub muted" data-reveal data-reveal-delay="2">
+          Sessions move fluidly between modalities — whichever serves the week you're in.
+        </p>
+      </div>
+
+      <div class="svcs__grid">
+        <article class="svc" data-reveal data-reveal-delay="2">
+          <div class="svc__head">
+            <span class="tag"><span class="pulse" style="background:var(--moss);"></span> Modality 01</span>
+            <h3 class="display svc__h">Dialectical<br/>Behavior Therapy.</h3>
+          </div>
+          <p class="svc__p">
+            A practical framework for big emotions, fraught relationships, and the
+            patterns we'd rather not repeat. DBT teaches four skill sets you can
+            actually use: mindfulness, distress tolerance, emotion regulation,
+            and interpersonal effectiveness.
+          </p>
+          <ul class="svc__list">
+            <li>Mindfulness — staying present without bracing</li>
+            <li>Distress tolerance — riding waves you can't fix</li>
+            <li>Emotion regulation — fewer hijacks, more choices</li>
+            <li>Interpersonal effectiveness — saying the thing, well</li>
+          </ul>
+          <a class="tlink" href="/services#dbt">Read more about DBT <span class="arrow">↗</span></a>
+        </article>
+
+        <article class="svc svc--alt" data-reveal data-reveal-delay="3">
+          <div class="svc__head">
+            <span class="tag"><span class="pulse" style="background:var(--clay);"></span> Modality 02</span>
+            <h3 class="display svc__h">Self-Compassion<br/>Therapy.</h3>
+          </div>
+          <p class="svc__p">
+            Most of us are remarkably hard on ourselves — and surprised when that
+            doesn't make things better. Self-compassion practice is the slow,
+            steady work of treating yourself the way you'd treat someone you love
+            who happened to be in the same trouble.
+          </p>
+          <ul class="svc__list">
+            <li>Soften the inner critic without silencing it</li>
+            <li>Notice shared humanity in private struggle</li>
+            <li>Build a mindful, kind relationship to setbacks</li>
+            <li>Use kindness as a method, not a feeling</li>
+          </ul>
+          <a class="tlink" href="/services#self-compassion">Read more about this approach <span class="arrow">↗</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT KEVIN ============ -->
+  <section class="about">
+    <div class="wrap about__wrap">
+      <div class="about__photo" data-reveal>
+        <img src="/images/kevin.jpg" alt="Kevin Roche, LMHC LPC, founder of Finding Forward"/>
+        <div class="about__photo-tag mono">
+          <span>Kevin Roche</span>
+          <span>LMHC · LPC</span>
+        </div>
+        <span class="about__sticker display">est. <em>2021</em></span>
+      </div>
+      <div class="about__copy">
+        <p class="eyebrow" data-reveal>Index — 04 / Practitioner</p>
+        <h2 class="display about__h" data-reveal data-reveal-delay="1">
+          Hi, I'm <em>Kevin.</em><br/>
+          I'll be the one across the screen.
+        </h2>
+        <div class="about__body" data-reveal data-reveal-delay="2">
+          <p>
+            I'm a licensed therapist in New York and Virginia, and the founder of
+            Finding Forward. I work with adults who are tired of feeling stuck —
+            in old patterns, in difficult relationships, in stories they've
+            outgrown — and ready to try something quieter and more deliberate.
+          </p>
+          <p>
+            My sessions tend to be conversational, warm, and direct. I'll ask
+            real questions, I won't pretend to have a script, and I'll bring
+            tools when tools help.
+          </p>
+        </div>
+        <dl class="creds" data-reveal data-reveal-delay="3">
+          <div><dt class="mono">License · NY</dt><dd>009382</dd></div>
+          <div><dt class="mono">License · VA</dt><dd>0701010208</dd></div>
+          <div><dt class="mono">Modalities</dt><dd>DBT · Self-Compassion</dd></div>
+          <div><dt class="mono">Format</dt><dd>Telehealth · 50&nbsp;min</dd></div>
+        </dl>
+        <a class="tlink" href="/about" data-reveal data-reveal-delay="4">More about me <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GETTING STARTED ============ -->
+  <section id="start" class="start">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Index — 05 / Begin</p>
+      <h2 class="display start__h" data-reveal data-reveal-delay="1">
+        Three small steps from<br/>
+        <em>here</em> to your first session.
+      </h2>
+
+      <ol class="steps">
+        <li class="step" data-reveal data-reveal-delay="2">
+          <p class="step__n display">01</p>
+          <h3 class="step__h">Check benefits</h3>
+          <p class="step__p">Find out in a minute whether your plan covers therapy — there's a calculator linked below.</p>
+          <a class="tlink" href="https://headway.co/does-my-insurance-cover-therapy" target="_blank" rel="noopener">Check insurance <span class="arrow">↗</span></a>
+        </li>
+        <li class="step" data-reveal data-reveal-delay="3">
+          <p class="step__n display">02</p>
+          <h3 class="step__h">Book a consult</h3>
+          <p class="step__p">A free, 20-minute call. We get a feel for fit and answer any questions before you commit.</p>
+          <a class="tlink" href="https://calendly.com/kevinrochelpc/consultation-call" target="_blank" rel="noopener">Schedule a call <span class="arrow">↗</span></a>
+        </li>
+        <li class="step" data-reveal data-reveal-delay="4">
+          <p class="step__n display">03</p>
+          <h3 class="step__h">Begin the work</h3>
+          <p class="step__p">If we click, you'll get a portal link, paperwork, and a regular session time. We start the following week.</p>
+          <a class="tlink" href="/about">What to expect <span class="arrow">↗</span></a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="quotes">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Index — 06 / In their words</p>
+      <div class="quotes__grid">
+        <blockquote class="q q--main" data-reveal data-reveal-delay="1">
+          <p class="display q__t">
+            "I came in expecting <em>tools</em> and left with something <em>quieter</em> —
+            permission to be a person while I worked on being a better one."
+          </p>
+          <footer class="q__by mono">— Client, NY · 2024</footer>
+        </blockquote>
+        <blockquote class="q" data-reveal data-reveal-delay="2">
+          <p class="q__t">"Kevin made the hard parts feel less like failures and more like data."</p>
+          <footer class="q__by mono">— Client, VA</footer>
+        </blockquote>
+        <blockquote class="q" data-reveal data-reveal-delay="3">
+          <p class="q__t">"First therapist I've kept past three sessions. The DBT work changed how I argue."</p>
+          <footer class="q__by mono">— Client, NY</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* HERO ===================== */
+  .hero {
+    position: relative;
+    padding-top: clamp(48px, 7vw, 88px);
+    padding-bottom: clamp(64px, 8vw, 120px);
+    overflow: hidden;
+  }
+  .hero__wrap {
+    position: relative;
+    display: grid;
+    gap: clamp(36px, 5vw, 64px);
+  }
+  .hero__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hero__loc { font-size: 11px; color: var(--ink-2); }
+  .hero__h {
+    font-size: clamp(64px, 12vw, 200px);
+    font-weight: 320;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    max-width: 13ch;
+    position: relative;
+    z-index: 2;
+  }
+  .hero__h em { color: var(--clay); }
+  .hero__meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 880px;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+  .hero__label { color: var(--ink-2); margin-bottom: 8px; }
+  .hero__val { font-size: 14px; line-height: 1.45; max-width: none; }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .hero__art {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero__art figure {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 24px 60px rgba(28, 38, 32, 0.18);
+  }
+  .hero__art figure::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 60px;
+    background: linear-gradient(to top, rgba(28,38,32,0.55), transparent);
+    pointer-events: none;
+  }
+  .hero__art figcaption {
+    position: absolute;
+    bottom: 14px; left: 16px;
+    color: var(--paper);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    z-index: 1;
+  }
+  .hero__art img { width: 100%; height: 100%; object-fit: cover; }
+  .hero__art-1 {
+    width: 280px; height: 360px;
+    right: 0; top: 30px;
+    transform: rotate(2deg);
+  }
+  .hero__art-2 {
+    width: 220px; height: 160px;
+    right: 160px; top: 470px;
+    transform: rotate(-3deg);
+  }
+  .hero__quote {
+    position: absolute;
+    right: 60px;
+    top: 660px;
+    width: 320px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px 26px 22px;
+    transform: rotate(1deg);
+    box-shadow: 0 12px 30px rgba(28,38,32,0.06);
+  }
+  .hero__quote-mark {
+    position: absolute;
+    top: -28px; left: 14px;
+    font-size: 80px;
+    color: var(--clay);
+    line-height: 1;
+    font-style: italic;
+  }
+  .hero__quote-t {
+    font-family: var(--display);
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 360;
+    font-style: italic;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .hero__quote-by { margin-top: 10px; font-size: 11px; color: var(--ink-2); }
+
+  @media (max-width: 1100px) {
+    .hero__art { display: none; }
+  }
+
+  /* TICKER */
+  .ticker {
+    position: relative;
+    margin-top: clamp(48px, 7vw, 96px);
+    border-block: 1px solid var(--line);
+    overflow: hidden;
+    padding: 18px 0;
+    background: var(--bone-2);
+  }
+  .ticker__track {
+    display: flex;
+    gap: 36px;
+    white-space: nowrap;
+    animation: marq 50s linear infinite;
+    will-change: transform;
+  }
+  .ticker__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 36px;
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 360;
+    font-style: italic;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+  }
+  .ticker__dot { color: var(--clay); font-style: normal; font-size: 16px; }
+  @keyframes marq {
+    to { transform: translateX(-25%); }
+  }
+
+  /* APPROACH ===================== */
+  .approach {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background: var(--bone);
+    position: relative;
+  }
+  .approach__intro { max-width: 1000px; margin-bottom: clamp(48px, 6vw, 88px); display: grid; gap: 22px; }
+  .approach__h { font-size: clamp(40px, 5.5vw, 88px); line-height: 0.98; }
+  .approach__h em { color: var(--moss); }
+  .approach__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(40px, 5vw, 80px);
+  }
+  .approach__lead { display: grid; gap: 18px; }
+  .approach__lead p { font-size: 18px; max-width: 30ch; }
+
+  .pillars {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .pillar {
+    background: var(--bone);
+    padding: 32px 28px;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    transition: background 0.5s var(--ease);
+  }
+  .pillar:hover { background: var(--paper); }
+  .pillar__n { color: var(--clay); font-weight: 500; }
+  .pillar__h { font-size: 26px; line-height: 1.1; }
+  .pillar__p { font-size: 15px; color: var(--ink-2); }
+
+  @media (max-width: 880px) {
+    .approach__grid { grid-template-columns: 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+  }
+
+  /* SERVICES ===================== */
+  .svcs {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+  }
+  .svcs .eyebrow { color: var(--sage); }
+  .svcs .eyebrow::before { background: var(--sage); }
+  .svcs__head { display: grid; gap: 22px; max-width: 800px; margin-bottom: clamp(48px, 6vw, 80px); }
+  .svcs__h { color: var(--paper); }
+  .svcs__sub { color: rgba(250,245,234,0.7); font-size: 18px; }
+
+  .svcs__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(250,245,234,0.12);
+    border: 1px solid rgba(250,245,234,0.12);
+  }
+  .svc {
+    background: var(--ink);
+    padding: clamp(36px, 4vw, 56px);
+    display: grid;
+    gap: 24px;
+    align-content: start;
+    transition: background 0.6s var(--ease);
+  }
+  .svc:hover { background: var(--ink-2); }
+  .svc--alt:hover { background: rgba(195, 107, 71, 0.06); }
+  .svc__head { display: grid; gap: 18px; }
+  .svc__h { font-size: clamp(38px, 4vw, 56px); line-height: 1; color: var(--paper); letter-spacing: -0.03em; }
+  .svc--alt .svc__h { color: var(--sun); font-style: italic; font-variation-settings: "opsz" 144, "SOFT" 100; }
+  .svc__p { color: rgba(250,245,234,0.78); font-size: 16px; }
+  .svc__list { list-style: none; display: grid; gap: 10px; padding-top: 8px; border-top: 1px solid rgba(250,245,234,0.12); }
+  .svc__list li {
+    font-size: 14px;
+    color: rgba(250,245,234,0.82);
+    padding-left: 22px;
+    position: relative;
+  }
+  .svc__list li::before {
+    content: '✶';
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--sun);
+  }
+  .svc--alt .svc__list li::before { color: var(--clay); }
+  .svc .tlink { color: var(--paper); border-color: rgba(250,245,234,0.4); }
+  .svc .tlink:hover { color: var(--sun); border-color: var(--sun); }
+
+  @media (max-width: 880px) {
+    .svcs__grid { grid-template-columns: 1fr; }
+  }
+
+  /* ABOUT ===================== */
+  .about {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background: var(--bone-2);
+    position: relative;
+  }
+  .about__wrap {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(40px, 5vw, 80px);
+    align-items: start;
+  }
+  .about__photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(28,38,32,0.15);
+  }
+  .about__photo img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 1.2s var(--ease);
+  }
+  .about__photo:hover img { transform: scale(1.04); }
+  .about__photo-tag {
+    position: absolute;
+    bottom: 16px; left: 16px;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .about__photo-tag span:last-child { color: var(--moss); }
+  .about__sticker {
+    position: absolute;
+    top: -22px; right: -22px;
+    width: 110px; height: 110px;
+    display: grid;
+    place-items: center;
+    background: var(--clay);
+    color: var(--paper);
+    border-radius: 999px;
+    font-size: 22px;
+    text-align: center;
+    line-height: 1.05;
+    font-variation-settings: "opsz" 144, "SOFT" 60;
+    transform: rotate(-8deg);
+    box-shadow: 0 12px 30px rgba(195,107,71,0.35);
+  }
+  .about__sticker em { display: block; font-size: 26px; font-variation-settings: "opsz" 144, "SOFT" 100; }
+
+  .about__copy { display: grid; gap: 22px; }
+  .about__h { font-size: clamp(40px, 4.5vw, 68px); line-height: 1.02; }
+  .about__h em { color: var(--clay); }
+  .about__body { display: grid; gap: 16px; }
+  .about__body p { font-size: 17px; max-width: 56ch; }
+
+  .creds {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 32px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 8px;
+  }
+  .creds dt { color: var(--ink-2); margin-bottom: 4px; }
+  .creds dd { font-size: 16px; font-weight: 500; }
+
+  @media (max-width: 880px) {
+    .about__wrap { grid-template-columns: 1fr; }
+    .about__sticker { width: 90px; height: 90px; top: -16px; right: -10px; font-size: 18px; }
+    .about__sticker em { font-size: 22px; }
+  }
+
+  /* GETTING STARTED ===================== */
+  .start { padding: clamp(80px, 10vw, 140px) 0; background: var(--bone); }
+  .start__h {
+    margin: 22px 0 clamp(48px, 6vw, 72px);
+    font-size: clamp(40px, 5.5vw, 84px);
+    line-height: 1;
+    max-width: 16ch;
+  }
+  .start__h em { color: var(--clay); }
+
+  .steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .step {
+    padding: 36px 28px 34px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    position: relative;
+    display: grid;
+    gap: 14px;
+    align-content: start;
+    transition: transform 0.6s var(--ease), background 0.6s var(--ease);
+  }
+  .step:hover { transform: translateY(-4px); background: var(--bone); }
+  .step__n {
+    font-size: 64px;
+    line-height: 1;
+    color: var(--clay);
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .step__h { font-size: 26px; }
+  .step__p { font-size: 15px; color: var(--ink-2); max-width: none; }
+  .step .tlink { margin-top: 4px; }
+
+  @media (max-width: 880px) {
+    .steps { grid-template-columns: 1fr; }
+  }
+
+  /* TESTIMONIALS ===================== */
+  .quotes {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background: var(--bone);
+    border-top: 1px solid var(--line);
+  }
+  .quotes__grid {
+    margin-top: clamp(32px, 4vw, 56px);
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 28px;
+  }
+  .q {
+    background: var(--paper);
+    padding: clamp(28px, 3vw, 44px);
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .q__t {
+    font-family: var(--display);
+    font-weight: 360;
+    font-size: 22px;
+    line-height: 1.3;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  .q--main .q__t {
+    font-size: clamp(28px, 3.2vw, 44px);
+    line-height: 1.12;
+    font-variation-settings: "opsz" 144, "SOFT" 60;
+  }
+  .q--main .q__t em { color: var(--clay); font-variation-settings: "opsz" 144, "SOFT" 100; }
+  .q__by { color: var(--ink-2); }
+
+  @media (max-width: 880px) {
+    .quotes__grid { grid-template-columns: 1fr; }
+  }
+</style>

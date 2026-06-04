@@ -1,0 +1,138 @@
+---
+interface Props { active?: string }
+const { active = 'home' } = Astro.props;
+
+const links = [
+  { key: 'home',      href: '/',           label: 'Home' },
+  { key: 'approach',  href: '/#approach',  label: 'Approach' },
+  { key: 'services',  href: '/services',   label: 'Services' },
+  { key: 'about',     href: '/about',      label: 'About' },
+  { key: 'contact',   href: '/contact',    label: 'Contact' },
+];
+---
+<header class="nav" data-header>
+  <div class="nav__inner">
+    <a href="/" class="nav__brand" aria-label="Finding Forward home">
+      <span class="nav__mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="32" height="32">
+          <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M11 26 L11 14 L17 14 M11 20 L16 20" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M22 26 L22 14 L28 14 L22 26 Z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="nav__name">
+        <span class="nav__name-top">Finding</span>
+        <span class="nav__name-bot italic">forward</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {links.map(l => (
+        <a href={l.href} class:list={['nav__link', { 'is-active': active === l.key }]}>{l.label}</a>
+      ))}
+    </nav>
+
+    <div class="nav__cta">
+      <span class="nav__live" aria-hidden="true"><span class="pulse"></span> Accepting clients</span>
+      <a href="https://calendly.com/kevinrochelpc/consultation-call" class="btn btn-primary nav__btn" target="_blank" rel="noopener">
+        <span>Schedule a consult</span>
+        <span class="dot" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(241, 235, 221, 0.72);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .nav.is-scrolled {
+    border-bottom-color: var(--line);
+    background: rgba(241, 235, 221, 0.88);
+  }
+  .nav__inner {
+    max-width: var(--maxw);
+    margin-inline: auto;
+    padding: 18px var(--gutter);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ink);
+  }
+  .nav__mark { color: var(--moss); display: grid; place-items: center; }
+  .nav__name {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 0.95;
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  .nav__name-bot { font-size: 22px; margin-top: -2px; }
+  .nav__links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+  }
+  .nav__link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-2);
+    position: relative;
+    padding: 6px 2px;
+    transition: color 0.4s var(--ease);
+  }
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 100%;
+    bottom: 0;
+    height: 1px;
+    background: var(--ink);
+    transition: right 0.4s var(--ease);
+  }
+  .nav__link:hover, .nav__link.is-active { color: var(--ink); }
+  .nav__link:hover::after, .nav__link.is-active::after { right: 0; }
+
+  .nav__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .nav__live {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .nav__btn { padding: 12px 16px 12px 18px; font-size: 13px; }
+
+  @media (max-width: 920px) {
+    .nav__links { display: none; }
+    .nav__inner { grid-template-columns: auto 1fr; }
+    .nav__live { display: none; }
+  }
+  @media (max-width: 540px) {
+    .nav__btn span:first-child { display: none; }
+    .nav__btn { padding: 12px; }
+    .nav__btn::after { content: 'Consult'; }
+  }
+</style>
