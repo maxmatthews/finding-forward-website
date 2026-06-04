@@ -21,18 +21,19 @@ GitHub → Settings → Developer settings → **OAuth Apps** → "New OAuth App
 Save. Copy the **Client ID**. Click "Generate a new client secret" and copy
 that too (it's shown once).
 
-### 2. Install Wrangler + sign in to Cloudflare
+### 2. Sign in to Cloudflare via Wrangler
+
+`npx` will fetch Wrangler on demand — no local install needed.
 
 ```bash
 cd worker
-npm install
-npx wrangler login   # opens a browser
+npx wrangler@latest login   # opens a browser
 ```
 
 ### 3. Deploy
 
 ```bash
-npx wrangler deploy
+npx wrangler@latest deploy
 ```
 
 The output prints your Worker URL, e.g.
@@ -41,9 +42,9 @@ The output prints your Worker URL, e.g.
 ### 4. Save the OAuth credentials as secrets
 
 ```bash
-npx wrangler secret put OAUTH_CLIENT_ID
+npx wrangler@latest secret put OAUTH_CLIENT_ID
 # paste the Client ID, press Enter
-npx wrangler secret put OAUTH_CLIENT_SECRET
+npx wrangler@latest secret put OAUTH_CLIENT_SECRET
 # paste the Client Secret, press Enter
 ```
 

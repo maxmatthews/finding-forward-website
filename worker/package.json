@@ -4,11 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "tail": "wrangler tail"
-  },
-  "devDependencies": {
-    "wrangler": "^4.0.0"
+    "deploy": "npx wrangler@latest deploy",
+    "dev": "npx wrangler@latest dev",
+    "tail": "npx wrangler@latest tail"
   }
 }
