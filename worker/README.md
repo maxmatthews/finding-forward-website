@@ -47,6 +47,22 @@ npx wrangler secret put OAUTH_CLIENT_SECRET
 # paste the Client Secret, press Enter
 ```
 
+### 4b. (Optional) Update the allowlist
+
+The default allowlist in `wrangler.toml` is just `maxmatthews`. To add Kevin
+or anyone else, either:
+
+```bash
+# Edit wrangler.toml → ALLOWED_USERS, then redeploy:
+npx wrangler deploy
+```
+
+or update the env var via the Cloudflare dashboard
+(Workers → ff-cms-auth → Settings → Variables) — no redeploy needed.
+
+Anyone whose GitHub username is not on this list will hit a "Not authorized"
+page and the token GitHub just minted for them is immediately revoked.
+
 ### 5. Fix the GitHub OAuth App callback URL
 
 Back in GitHub → your OAuth App → set the callback URL to the real Worker URL

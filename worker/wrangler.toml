@@ -6,6 +6,9 @@ compatibility_date = "2025-09-01"
 #   wrangler secret put OAUTH_CLIENT_ID
 #   wrangler secret put OAUTH_CLIENT_SECRET
 #
-# Non-secret env var — set in the dashboard or here:
+# Non-secret env vars — set here or in the dashboard:
 [vars]
 ALLOWED_ORIGIN = "https://new.findingforwardcounseling.com"
+# Comma-separated, lowercase GitHub usernames allowed to sign in.
+# Anyone not on this list is denied and their freshly-issued token is revoked.
+ALLOWED_USERS = "maxmatthews"
