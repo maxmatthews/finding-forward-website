@@ -1,5 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const latest = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 <Layout active="home">
 
@@ -255,6 +261,35 @@ import Layout from '../layouts/Layout.astro';
       </ol>
     </div>
   </section>
+
+  <!-- ============ NOTES PREVIEW ============ -->
+  {latest.length > 0 && (
+    <section class="hnotes">
+      <div class="wrap">
+        <div class="hnotes__head">
+          <p class="eyebrow" data-reveal>Index — 06 / Practice Notes</p>
+          <h2 class="display hnotes__h" data-reveal data-reveal-delay="1">
+            From the <em>journal.</em>
+          </h2>
+        </div>
+        <ul class="hnotes__list">
+          {latest.map((post, i) => (
+            <li class="hnote" data-reveal data-reveal-delay={i + 2}>
+              <a href={`/blog/${post.id}/`} class="hnote__link">
+                <p class="mono hnote__date">{fmt(post.data.date)}</p>
+                <h3 class="display hnote__h">{post.data.title}</h3>
+                <p class="hnote__sum">{post.data.summary}</p>
+                <span class="tlink hnote__cta">Continue reading <span class="arrow">↗</span></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a class="btn btn-ghost hnotes__all" href="/blog/">
+          <span>All notes</span><span class="dot" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+  )}
 
   <!-- ============ TESTIMONIALS ============ -->
   <section class="quotes">
@@ -691,5 +726,45 @@ import Layout from '../layouts/Layout.astro';
 
   @media (max-width: 880px) {
     .quotes__grid { grid-template-columns: 1fr; }
+  }
+
+  /* NOTES PREVIEW ===================== */
+  .hnotes {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background: var(--bone-2);
+    border-top: 1px solid var(--line);
+  }
+  .hnotes__head { display: grid; gap: 22px; margin-bottom: clamp(40px, 5vw, 64px); }
+  .hnotes__h { font-size: clamp(40px, 5.5vw, 80px); line-height: 1; }
+  .hnotes__h em { color: var(--clay); }
+  .hnotes__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .hnote { background: var(--bone-2); transition: background 0.5s var(--ease); }
+  .hnote:hover { background: var(--paper); }
+  .hnote__link {
+    display: grid;
+    gap: 14px;
+    padding: clamp(28px, 3vw, 40px);
+    align-content: start;
+  }
+  .hnote__date { color: var(--ink-2); }
+  .hnote__h {
+    font-size: clamp(26px, 2.6vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+  }
+  .hnote__sum { font-size: 15px; color: var(--ink-2); max-width: 50ch; }
+  .hnote__cta { margin-top: 6px; }
+  .hnotes__all { margin-top: clamp(32px, 4vw, 56px); }
+
+  @media (max-width: 880px) {
+    .hnotes__list { grid-template-columns: 1fr; }
   }
 </style>

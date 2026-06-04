@@ -1,0 +1,160 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const fmt = (d: Date) => d.toLocaleDateString('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+---
+<Layout
+  active="notes"
+  title="Practice Notes — Finding Forward"
+  description="Short essays on therapy, skills, and the slow work of becoming less reactive to your own life. From Kevin Roche, LMHC LPC.">
+
+  <section class="bhead">
+    <div class="wrap bhead__wrap">
+      <p class="eyebrow" data-reveal>Section — Practice Notes</p>
+      <h1 class="display bhead__h" data-reveal data-reveal-delay="1">
+        Thinking out loud,<br/>
+        <em>between sessions.</em>
+      </h1>
+      <p class="bhead__lead" data-reveal data-reveal-delay="2">
+        Short essays on the work — DBT, self-compassion, and the patterns I
+        keep noticing. Written for the people actually using these ideas,
+        not for clinicians.
+      </p>
+    </div>
+  </section>
+
+  <section class="blist">
+    <div class="wrap">
+      {posts.length === 0 ? (
+        <p class="blist__empty">No posts yet. Come back soon.</p>
+      ) : (
+        <ol class="blist__list">
+          {posts.map((post, i) => (
+            <li class="bcard" data-reveal data-reveal-delay={Math.min(i + 1, 6)}>
+              <a href={`/blog/${post.id}/`} class="bcard__link">
+                <div class="bcard__meta">
+                  <time class="mono">{fmt(post.data.date)}</time>
+                  <span class="mono bcard__num">№ {String(posts.length - i).padStart(2, '0')}</span>
+                </div>
+                <div class="bcard__body">
+                  <h2 class="display bcard__h">{post.data.title}</h2>
+                  <p class="bcard__sum">{post.data.summary}</p>
+                  <div class="bcard__foot">
+                    {post.data.tags.length > 0 && (
+                      <ul class="bcard__tags">
+                        {post.data.tags.map(t => <li class="mono">{t}</li>)}
+                      </ul>
+                    )}
+                    <span class="tlink bcard__cta">
+                      Read <span class="arrow">↗</span>
+                    </span>
+                  </div>
+                </div>
+                {post.data.hero && (
+                  <figure class="bcard__hero">
+                    <img src={post.data.hero} alt={post.data.heroAlt || ''} loading="lazy"/>
+                  </figure>
+                )}
+              </a>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .bhead {
+    padding: clamp(64px, 8vw, 120px) 0 clamp(36px, 5vw, 64px);
+    background: var(--bone);
+  }
+  .bhead__wrap { display: grid; gap: 22px; max-width: 1100px; }
+  .bhead__h { font-size: clamp(56px, 8vw, 128px); line-height: 0.94; letter-spacing: -0.04em; }
+  .bhead__h em { color: var(--clay); }
+  .bhead__lead { font-size: 19px; max-width: 60ch; color: var(--ink-2); }
+
+  .blist { padding: clamp(40px, 6vw, 80px) 0 clamp(80px, 10vw, 140px); background: var(--bone); }
+  .blist__empty { color: var(--ink-2); font-size: 18px; }
+  .blist__list { list-style: none; display: grid; gap: 0; border-top: 1px solid var(--line); }
+
+  .bcard { border-bottom: 1px solid var(--line); }
+  .bcard__link {
+    display: grid;
+    grid-template-columns: 0.4fr 1.6fr 0.8fr;
+    gap: clamp(20px, 4vw, 56px);
+    padding: clamp(28px, 4vw, 44px) 0;
+    align-items: start;
+    transition: background 0.5s var(--ease);
+    position: relative;
+  }
+  .bcard__link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease);
+    border-radius: 4px;
+    margin: 0 calc(-1 * clamp(16px, 2vw, 28px));
+    z-index: -1;
+  }
+  .bcard__link:hover::before { opacity: 1; }
+  .bcard__meta { display: grid; gap: 6px; }
+  .bcard__meta .mono { font-size: 11px; color: var(--ink-2); letter-spacing: 0.14em; }
+  .bcard__num { color: var(--clay) !important; }
+
+  .bcard__body { display: grid; gap: 14px; max-width: 60ch; }
+  .bcard__h {
+    font-size: clamp(28px, 3.4vw, 48px);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    transition: color 0.4s var(--ease);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .bcard__link:hover .bcard__h { color: var(--clay); }
+  .bcard__sum { font-size: 16px; color: var(--ink-2); max-width: 56ch; }
+  .bcard__foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    align-items: center;
+    margin-top: 6px;
+  }
+  .bcard__tags { list-style: none; display: flex; gap: 8px; flex-wrap: wrap; }
+  .bcard__tags li {
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .bcard__cta { color: var(--ink); margin-left: auto; }
+
+  .bcard__hero {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .bcard__hero img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 1s var(--ease);
+  }
+  .bcard__link:hover .bcard__hero img { transform: scale(1.04); }
+
+  @media (max-width: 900px) {
+    .bcard__link { grid-template-columns: 1fr; }
+    .bcard__cta { margin-left: 0; }
+    .bcard__hero { aspect-ratio: 16 / 10; max-height: 280px; }
+  }
+</style>

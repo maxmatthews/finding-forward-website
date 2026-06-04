@@ -1,0 +1,43 @@
+backend:
+  name: github
+  repo: maxmatthews/finding-forward-website
+  branch: main
+  # Cloudflare Worker that handles the GitHub OAuth handshake.
+  # Set this once the worker is deployed (see /worker/README.md).
+  base_url: https://ff-cms-auth.YOUR-CF-SUBDOMAIN.workers.dev
+  auth_endpoint: auth
+
+site_url: https://new.findingforwardcounseling.com
+display_url: https://new.findingforwardcounseling.com
+
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
+
+collections:
+  - name: blog
+    label: "Practice Notes"
+    label_singular: "Note"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: mdx
+    format: frontmatter
+    summary: "{{title}} — {{date | date('MMM D, YYYY')}}"
+    sortable_fields: ["date", "title"]
+    view_filters:
+      - label: "Drafts"
+        field: draft
+        pattern: true
+      - label: "Published"
+        field: draft
+        pattern: false
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "Summary", name: summary, widget: text, hint: "1–2 sentences shown on the index and in shares." }
+      - { label: "Publish date", name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: false }
+      - { label: "Last updated", name: updated, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: false, required: false }
+      - { label: "Hero image", name: hero, widget: image, required: false, hint: "Optional. ~1600px wide JPG looks best." }
+      - { label: "Hero alt text", name: heroAlt, widget: string, required: false }
+      - { label: "Tags", name: tags, widget: list, default: [], required: false }
+      - { label: "Draft", name: draft, widget: boolean, default: true, hint: "Drafts are hidden from the public site." }
+      - { label: "Body", name: body, widget: markdown }

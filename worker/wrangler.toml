@@ -1,0 +1,11 @@
+name = "ff-cms-auth"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+# Secrets — set with:
+#   wrangler secret put OAUTH_CLIENT_ID
+#   wrangler secret put OAUTH_CLIENT_SECRET
+#
+# Non-secret env var — set in the dashboard or here:
+[vars]
+ALLOWED_ORIGIN = "https://new.findingforwardcounseling.com"
