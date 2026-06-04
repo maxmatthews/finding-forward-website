@@ -30,3 +30,7 @@ v3-*.png
 
 # Claude Code local settings
 .claude/
+
+# Kevin handoff guide (local only)
+KEVIN-GUIDE.md
+KEVIN-GUIDE.pdf
