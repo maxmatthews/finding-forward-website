@@ -3,8 +3,7 @@ backend:
   repo: maxmatthews/finding-forward-website
   branch: main
   # Cloudflare Worker that handles the GitHub OAuth handshake.
-  # Set this once the worker is deployed (see /worker/README.md).
-  base_url: https://ff-cms-auth.YOUR-CF-SUBDOMAIN.workers.dev
+  base_url: https://ff-cms-auth.findingforward.workers.dev
   auth_endpoint: auth
 
 site_url: https://new.findingforwardcounseling.com
