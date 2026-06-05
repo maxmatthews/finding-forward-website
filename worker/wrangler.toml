@@ -11,4 +11,4 @@ compatibility_date = "2025-09-01"
 ALLOWED_ORIGIN = "https://new.findingforwardcounseling.com"
 # Comma-separated, lowercase GitHub usernames allowed to sign in.
 # Anyone not on this list is denied and their freshly-issued token is revoked.
-ALLOWED_USERS = "maxmatthews"
+ALLOWED_USERS = "maxmatthews,kevinrochelpc"
