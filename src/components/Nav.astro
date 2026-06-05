@@ -38,9 +38,52 @@ const links = [
         <span>Schedule a consult</span>
         <span class="dot" aria-hidden="true"></span>
       </a>
+      <button
+        type="button"
+        class="nav__toggle"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open menu"
+        data-nav-toggle
+      >
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+      </button>
     </div>
   </div>
 </header>
+
+<!-- Mobile menu overlay -->
+<div
+  id="mobile-menu"
+  class="mnav"
+  aria-hidden="true"
+  data-nav-menu
+>
+  <div class="mnav__inner">
+    <p class="eyebrow mnav__eyebrow">Index — Menu</p>
+    <nav class="mnav__links" aria-label="Mobile primary">
+      {links.map((l, i) => (
+        <a
+          href={l.href}
+          class:list={['mnav__link', { 'is-active': active === l.key }]}
+          style={`--i:${i}`}
+        >
+          <span class="display mnav__label">{l.label}</span>
+          <span class="mono mnav__num">0{i + 1}</span>
+        </a>
+      ))}
+    </nav>
+    <div class="mnav__foot">
+      <a class="btn btn-primary mnav__cta" href="https://calendly.com/kevinrochelpc/consultation-call" target="_blank" rel="noopener">
+        <span>Schedule a consult</span><span class="dot" aria-hidden="true"></span>
+      </a>
+      <p class="mnav__live"><span class="pulse"></span> Accepting new clients</p>
+      <a class="mnav__phone display italic" href="tel:+15712009906">(571) 200&nbsp;–&nbsp;9906</a>
+    </div>
+  </div>
+</div>
 
 <style>
   .nav {
@@ -125,14 +168,207 @@ const links = [
   }
   .nav__btn { padding: 12px 16px 12px 18px; font-size: 13px; }
 
+  /* Hamburger button — hidden on desktop */
+  .nav__toggle {
+    display: none;
+    width: 44px; height: 44px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(250, 245, 234, 0.6);
+    color: var(--ink);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+  }
+  .nav__toggle:hover { background: var(--paper); border-color: var(--ink); }
+  .nav__toggle-bar {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.4s var(--ease), opacity 0.3s var(--ease), width 0.4s var(--ease);
+    transform-origin: center;
+  }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
   @media (max-width: 920px) {
     .nav__links { display: none; }
     .nav__inner { grid-template-columns: auto 1fr; }
     .nav__live { display: none; }
+    .nav__toggle { display: flex; }
   }
   @media (max-width: 540px) {
-    .nav__btn span:first-child { display: none; }
-    .nav__btn { padding: 12px; }
-    .nav__btn::after { content: 'Consult'; }
+    .nav__btn { display: none; }
+  }
+
+  /* Mobile menu overlay ========================== */
+  .mnav {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(80px, 14vw, 120px) var(--gutter) clamp(32px, 6vw, 48px);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.45s var(--ease), visibility 0s linear 0.45s;
+    overflow-y: auto;
+  }
+  .mnav::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(195, 107, 71, 0.25), transparent 60%);
+    pointer-events: none;
+  }
+  .mnav.is-open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.45s var(--ease), visibility 0s;
+  }
+  .mnav__inner {
+    position: relative;
+    display: grid;
+    gap: clamp(32px, 6vw, 56px);
+    max-width: var(--maxw);
+    margin-inline: auto;
+    min-height: calc(100vh - clamp(112px, 20vw, 168px));
+    grid-template-rows: auto 1fr auto;
+  }
+  .mnav__eyebrow { color: var(--sage); }
+  .mnav__eyebrow::before { background: var(--sage); }
+
+  .mnav__links {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid rgba(250, 245, 234, 0.12);
+  }
+  .mnav__link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: clamp(18px, 3vw, 28px) 0;
+    border-bottom: 1px solid rgba(250, 245, 234, 0.12);
+    color: var(--paper);
+    transition: color 0.3s var(--ease), padding-left 0.4s var(--ease);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .mnav.is-open .mnav__link {
+    animation: mnav-in 0.6s var(--ease) forwards;
+    animation-delay: calc(150ms + var(--i) * 70ms);
+  }
+  @keyframes mnav-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .mnav__link:hover { color: var(--sun); padding-left: 8px; }
+  .mnav__link.is-active { color: var(--clay); }
+  .mnav__label {
+    color: inherit;
+    font-size: clamp(40px, 9vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+  }
+  .mnav__link.is-active .mnav__label,
+  .mnav__link:hover .mnav__label {
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+  }
+  .mnav__num {
+    color: var(--sage);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+  }
+
+  .mnav__foot {
+    display: grid;
+    gap: 18px;
+    padding-top: clamp(28px, 4vw, 40px);
+    border-top: 1px solid rgba(250, 245, 234, 0.12);
+    justify-items: start;
+  }
+  .mnav__cta { background: var(--paper); color: var(--ink); }
+  .mnav__cta:hover { background: var(--sun); }
+  .mnav__live {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(250, 245, 234, 0.7);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .mnav__phone {
+    font-size: clamp(28px, 6vw, 40px);
+    color: var(--sun);
+    border-bottom: 1px solid rgba(229, 183, 99, 0.3);
+    padding-bottom: 2px;
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .mnav__phone:hover { color: var(--paper); border-color: var(--paper); }
+
+  /* Hide overlay above the breakpoint, no matter what */
+  @media (min-width: 921px) {
+    .mnav { display: none; }
+  }
+
+  /* Prevent body scroll when menu is open */
+  :global(body.has-mnav-open) {
+    overflow: hidden;
   }
 </style>
+
+<script is:inline>
+  (function () {
+    const toggle = document.querySelector('[data-nav-toggle]');
+    const menu = document.querySelector('[data-nav-menu]');
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.setAttribute('aria-hidden', String(!open));
+      menu.classList.toggle('is-open', open);
+      document.body.classList.toggle('has-mnav-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Close on link tap
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Close if the viewport grows past the breakpoint while open
+    const mq = window.matchMedia('(min-width: 921px)');
+    mq.addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+  })();
+</script>
